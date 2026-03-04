@@ -1,10 +1,12 @@
 const mongoose=require("mongoose")
 
+// Create a schema (structure) for User collection
 const userSchema=new mongoose.Schema({
     username:{
         type:String,
-        unique:[true,"username already taken"],
-        required: true,
+        unique:[true,"username already taken"],    // Ensures username is unique in database
+        // If duplicate is found, it throws this custom error message
+        required: true,    // Makes this field mandatory
     },
 
     email:{
@@ -22,6 +24,6 @@ const userSchema=new mongoose.Schema({
 
 })
 
-const userModel=mongoose.model("users",userSchema)
+const userModel=mongoose.model("users",userSchema)          //It is creating a Model. for crud operation
 
 module.exports=userModel
