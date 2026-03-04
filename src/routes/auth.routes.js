@@ -8,7 +8,7 @@ const authController=require("../controllers/auth.controller")
  * @access public
  */
 
-authRouter.post("/register",authController.registerUserController)
+authRouter.post("/register",authController.registerUserController)  //when post req comes this excution happens
 module.exports=authRouter
 
 
