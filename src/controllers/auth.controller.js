@@ -8,6 +8,8 @@ const jwt=require("jsonwebtoken")   //for generating the token
  * @access public
  */
 
+
+        //user registration controller logic
 async function registerUserController(req,res){
     const {username,email,password}=req.body
 
