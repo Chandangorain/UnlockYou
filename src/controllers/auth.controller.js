@@ -1,6 +1,9 @@
 const userModel=require("../models/user.model")
 const bcrypt=require("bcryptjs")   //for hashing the password
 const jwt=require("jsonwebtoken")   //for generating the token
+const tokenBlackListModel=require("../models/blacklist.models")   //for blacklisting the token on logout
+const { get } = require("mongoose")
+
 
 /**
  * @name registerUserController
@@ -89,8 +92,44 @@ async function loginUserController(req,res){
     })
 }
 
+
+/**
+ * @name logoutUserController
+ * @description clear token from cookie and add the token in blacklist
+ * @access public
+ */
+async function logoutUserController(req,res){
+    const token=req.cookies.token;
+    if(token){                                  //if token present then blaclist
+        await tokenBlackListModel.create({token})   //add the token in blacklist collection
+
+    }
+    res.clearCookie("token")   //clear the token from cookie
+    res.status(200).json({
+        message:"user logged out successfully"
+    })
+}
+
+/**
+ * @name getMeController
+ * @description get the details of logged in user
+ * @access private
+ */
+async function getMeController(req,res){
+    const user=await userModel.findById(req.user.id)   //get the user details from database with id from req.user which is set in authMiddleware
+    res.status(200).json({
+        message:"user details fetched successfully",
+        user:{
+            id:user._id,
+            username:user.username, 
+            email:user.email
+        }    
+    })
+}
 module.exports={
     registerUserController,
-    loginUserController
+    loginUserController,
+    logoutUserController,
+    getMeController
 }   
 
