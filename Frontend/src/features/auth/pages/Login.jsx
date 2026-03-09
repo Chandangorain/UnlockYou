@@ -1,14 +1,15 @@
 import React from 'react'
 import "../auth.form.scss"
+import { useNavigate, Link } from 'react-router-dom';
 
 const Login = () => {
-
+ const navigate = useNavigate();    //a function that allows you to change routes (pages) using JavaScript instead of clicking a link.
 
   const handleSubmit = (e) => {
     e.preventDefault();  //without it after submit the page reloads, so to avoid that we use this tht doesn't allow to reload
   }
   return (
-    <div>
+    
      <main>
         <div className="form-container">
           <h1>Login  </h1>  
@@ -26,10 +27,14 @@ const Login = () => {
             </div>
             <button className="button primary-button">Login</button>
              </form>
+
+              <p>
+                Don't have an account? <Link to="/register">Register</Link>   {/* Link is used to redirect to register page */}
+               </p>
         </div>
 
       </main>
-    </div>
+    
   )
 }
 
