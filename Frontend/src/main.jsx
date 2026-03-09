@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
-import './style.scss'   // first npm i saass , then it will be imported
+import "./style.scss"
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
