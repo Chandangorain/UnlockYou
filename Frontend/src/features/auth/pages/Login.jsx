@@ -1,13 +1,20 @@
 import React from 'react'
+import "../auth.form.scss"
 
 const Login = () => {
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();  //without it after submit the page reloads, so to avoid that we use this tht doesn't allow to reload
+  }
   return (
     <div>
-     <main>         // design for login page.
+     <main>
         <div className="form-container">
           <h1>Login  </h1>  
+
+            <form onSubmit={handleSubmit}>
           
-          <form> 
             <div className='input-group'>
               <label htmlFor="email">Email</label>
               <input type="email" id="email" name="email" placeholder='Enter your email' />

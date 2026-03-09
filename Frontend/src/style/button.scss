@@ -1,0 +1,19 @@
+.button{
+    border: none;
+    outline: none  ;
+    padding-inline: 1.5rem;
+    padding-block: 0.75rem;
+    border-radius: 1rem;
+    cursor: pointer;
+
+    transition:all 0.3s ease-in-out;
+
+    &.primary-button{               //primary button of login.jsx
+        background-color: rgb(225, 24, 108);
+        color: whitesmoke;
+    }
+
+    &:active{
+        transform:scale(1.05); // this is the transition effect after clicking the button, it will zoom in out.for all those buttons with class .button will have this transition effect.
+    }    
+}
